@@ -1,0 +1,28 @@
+.img-personaje img {
+  object-fit: cover;
+  height: 270px;
+  width: 470px !important;
+}
+
+.episodio-container p {
+  color: rgb(158, 158, 158);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.5rem;
+  line-height: normal;
+  margin-left: 1.5rem !important;
+}
+
+.episodio-container > div > p {
+  margin: 0 !important;
+  color: white;
+  font-size: 0.7rem;
+}
+
+.item-list-episodios {
+  background-color: greenyellow;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 100%;
+  margin-right: 0.4rem;
+}

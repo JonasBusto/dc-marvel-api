@@ -1,0 +1,12 @@
+.titulo-header {
+  color: rgb(32, 35, 41);
+  font-weight: bold;
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+header {
+  background-color: white;
+}
