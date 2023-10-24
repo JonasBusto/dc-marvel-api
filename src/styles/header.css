@@ -1,0 +1,25 @@
+.titulo-header {
+  color: rgb(32, 35, 41);
+  font-weight: bold;
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+header {
+  background-color: white;
+}
+
+.input-buscar {
+  width: 90%;
+  max-width: 900px;
+  height: 2.5rem;
+  border-radius: 0.5rem; 
+}
+
+.input-buscar::placeholder, .input-buscar:focus {
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.4rem;
+}
