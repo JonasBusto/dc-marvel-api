@@ -1,27 +1,118 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import ItemsContext from "../context/ItemContext";
 import CardPersonaje from "../components/CardPersonaje";
+import ReactPaginate from "react-paginate";
 import "../styles/home.css";
 
 const Home = () => {
-  const { personajes, getPersonajes } = useContext(ItemsContext);
-  const url_filtro = "https://rickandmortyapi.com/api/character/?page=";
+  const {
+    personajesArray,
+    personajes,
+    getPersonajes,
+    buscarPersonaje,
+    filtrarPorEstado,
+    filtrarPorEspecie,
+  } = useContext(ItemsContext);
+
+  let auxEspecies = [],
+    especies = [],
+    auxEstado = [],
+    estado = [];
 
   if (!personajes) {
     return <h3>Cargando...</h3>;
   }
+
+  personajesArray?.map((p) => {
+    auxEspecies.push(p.species);
+    auxEstado.push(p.status);
+  });
+
+  especies = auxEspecies.filter((e, i) => {
+    return auxEspecies.indexOf(e) === i;
+  });
+
+  estado = auxEstado.filter((e, i) => {
+    return auxEstado.indexOf(e) === i;
+  });
+
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 20;
+  const endOffset = itemOffset + itemsPerPage;
+  const currentItems = personajes.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(personajes.length / itemsPerPage);
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % personajes.length;
+    setItemOffset(newOffset);
+  };
 
   return (
     <div
       className="home-container mx-auto w-100"
       style={{ maxWidth: "1300px" }}
     >
-      <div className="row m-0">
-        {personajes?.map((p) => (
-          <CardPersonaje key={p.id} p={p} />
-        ))}
+      <div className="row m-0 pt-3 pb-2">
+        <div className="d-flex justify-content-center">
+          <input
+            className="input-buscar"
+            type="text"
+            onChange={(e) => buscarPersonaje(e.target.value)}
+            placeholder="buscar personaje"
+          />
+        </div>
       </div>
-      <div className="d-flex justify-content-center"></div>
+      <div className="row m-0 pt-1 pb-2">
+        <div className="d-flex justify-content-center">
+          <select
+            name="filtro-tipo"
+            id="filtro-tipo"
+            hidden
+            defaultValue={"default"}
+            onChange={(e) => filtrarPorEstado(e.target.value)}
+          >
+            <option value="default">Por defecto</option>
+            {estado.map((e, i) => (
+              <option key={i} value={"" + e + ""}>
+                {e}
+              </option>
+            ))}
+          </select>
+          <select
+            name="filtro-especie"
+            id="filtro-especie"
+            hidden
+            defaultValue={"default"}
+            onChange={(e) => filtrarPorEspecie(e.target.value)}
+          >
+            <option value="default">Por defecto</option>
+
+            {especies.map((e, i) => (
+              <option key={i} value={"" + e + ""}>
+                {e}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <div className="row m-0 resultados">
+        <p>{"Resultados: " + personajes.length}</p>
+      </div>
+      <div className="row m-0">
+        {currentItems &&
+          currentItems?.map((p) => <CardPersonaje key={p.id} p={p} />)}
+      </div>
+      <div className="d-flex justify-content-center">
+        <ReactPaginate
+          className="paginacion"
+          breakLabel="..."
+          nextLabel="Siguiente"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={pageCount}
+          previousLabel="Anterior"
+          renderOnZeroPageCount={null}
+        />
+      </div>
     </div>
   );
 };

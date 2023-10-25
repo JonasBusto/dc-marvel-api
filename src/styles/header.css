@@ -11,15 +11,3 @@ header {
   background-color: white;
 }
 
-.input-buscar {
-  width: 90%;
-  max-width: 900px;
-  height: 2.5rem;
-  border-radius: 0.5rem; 
-}
-
-.input-buscar::placeholder, .input-buscar:focus {
-  text-transform: uppercase;
-  font-weight: 700;
-  padding: 0.4rem;
-}

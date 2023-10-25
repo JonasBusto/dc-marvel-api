@@ -4,11 +4,15 @@ const ItemsContext = createContext();
 
 export function ItemProvider({ children }) {
   const [personajes, setPersonajes] = useState([]);
+  const [personajesArray, setPersonajesArray] = useState([]);
   const [personaje, setPersonaje] = useState(null);
   const [episodios, setEpisodios] = useState([]);
   const [episodio, setEpisodio] = useState(null);
   const [locacion, setLocacion] = useState(null);
+
   const [inputBuscar, setInputBuscar] = useState("");
+  const [filtroEstado, setFiltroEstado] = useState("");
+  const [filtroEspecie, setFiltroEspecie] = useState("");
 
   const getPersonajes = async (url) => {
     const res = await fetch(url);
@@ -16,6 +20,10 @@ export function ItemProvider({ children }) {
     setPersonajes((personajes) => {
       return [...personajes, ...data.results];
     });
+    setPersonajesArray((personajes) => {
+      return [...personajes, ...data.results];
+    });
+
     if (data.info && data.info.next) {
       getPersonajes(data.info.next);
     }
@@ -54,10 +62,41 @@ export function ItemProvider({ children }) {
     setInputBuscar(value);
   };
 
+  const filtrarPorEstado = (value) => {
+    setFiltroEstado(value);
+  };
+
+  const filtrarPorEspecie = (value) => {
+    setFiltroEspecie(value);
+  };
+
   useEffect(() => {
     getPersonajes("https://rickandmortyapi.com/api/character/");
     getEpisodios("https://rickandmortyapi.com/api/episode");
   }, []);
+
+  useEffect(() => {
+    let arrayAux = [];
+    personajesArray.map(
+      (p, i) =>
+        p.name.toLowerCase().includes(inputBuscar.toLowerCase().trim()) &&
+        arrayAux.push(p)
+    );
+    setPersonajes(arrayAux);
+  }, [inputBuscar]);
+
+  useEffect(() => {
+    let arrayAux = [];
+
+    if (filtroEspecie === "default" && filtroEstado === "default") {
+      arrayAux = [...personajesArray];
+      return 0;
+    }
+
+    console.log(filtroEspecie);
+
+    setPersonajes(arrayAux);
+  }, [filtroEspecie, filtroEstado]);
 
   return (
     <ItemsContext.Provider
@@ -73,6 +112,9 @@ export function ItemProvider({ children }) {
         getLocacion,
         buscarPersonaje,
         inputBuscar,
+        personajesArray,
+        filtrarPorEstado,
+        filtrarPorEspecie,
       }}
     >
       {children}
