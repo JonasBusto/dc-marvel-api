@@ -41,7 +41,7 @@ const Personaje = () => {
                       <img
                         className="img-fluid"
                         src="/src/assets/Marvel_Logo.svg.png"
-                        alt="marvel_comics.png"
+                        alt="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/2560px-Marvel_Logo.svg.png"
                       />
                     </div>
                   )}
@@ -51,7 +51,7 @@ const Personaje = () => {
                     <div className="d-flex logo-marca-personaje">
                       <img
                         className="img-fluid"
-                        src="/src/assets/DC_Comics_logo.png"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/DC_Comics_logo.png/768px-DC_Comics_logo.png"
                         alt="dc_comics.png"
                       />
                     </div>
