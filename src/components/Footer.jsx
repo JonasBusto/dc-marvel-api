@@ -3,7 +3,7 @@ import "../styles/footer.css";
 
 const Footer = () => {
   return (
-    <footer className="d-flex flex-column">
+    <footer className="d-flex flex-column mt-auto">
       <div className="api-footer-url d-flex justify-content-center align-items-center">
         <h5>Api: </h5>
         <a href="https://superheroapi.com/" target="_blank">

@@ -5,12 +5,14 @@ import "../styles/card-personaje.css";
 import "../styles/personaje.css";
 
 const Personaje = () => {
-  const { personaje, getPersonaje } = useContext(ItemsContext);
+  const { personaje, getPersonaje, buscarPersonaje } = useContext(ItemsContext);
   const { id } = useParams();
 
   useEffect(() => {
     getPersonaje(id);
   }, []);
+
+  buscarPersonaje("");
 
   if (!personaje) {
     return <h2>Cargando...</h2>;

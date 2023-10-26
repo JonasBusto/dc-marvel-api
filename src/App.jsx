@@ -8,9 +8,11 @@ import "./styles/app.css";
 const App = () => {
   return (
     <ItemProvider>
-      <Header />
-      <Main />
-      <Footer />
+      <div className="d-flex flex-column min-vh-100">
+        <Header />
+        <Main />
+        <Footer />
+      </div>
     </ItemProvider>
   );
 };

@@ -3,34 +3,40 @@ import ItemsContext from "../context/ItemContext";
 import CardPersonaje from "../components/CardPersonaje";
 import ReactPaginate from "react-paginate";
 import "../styles/home.css";
+import { useEffect } from "react";
 
 const Home = () => {
-  const { personajesArray, personajes, buscarPersonaje } =
+  const { personajes, buscarPersonaje, inputBuscar, cargando } =
     useContext(ItemsContext);
 
-  let auxEspecies = [],
-    especies = [],
-    auxEstado = [],
-    estado = [];
+  const [itemOffset, setItemOffset] = useState(0);
 
-  if (!personajes) {
-    return <h3>Cargando...</h3>;
+  useEffect(() => {
+    setItemOffset(0);
+  }, [inputBuscar]);
+
+  if (cargando < 101) {
+    return (
+      <div
+        className="d-flex align-items-center pt-5 mx-auto"
+        style={{ maxWidth: "1300px" }}
+      >
+        <div className="container-cargando">
+          <div className="progress progress-striped">
+            <div
+              className="progress-bar"
+              style={{
+                width: cargando + "%",
+              }}
+            >
+              <p className="numero-carga">{cargando + "%"}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
-  personajesArray?.map((p) => {
-    auxEspecies.push(p.species);
-    auxEstado.push(p.status);
-  });
-
-  especies = auxEspecies.filter((e, i) => {
-    return auxEspecies.indexOf(e) === i;
-  });
-
-  estado = auxEstado.filter((e, i) => {
-    return auxEstado.indexOf(e) === i;
-  });
-
-  const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 20;
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = personajes.slice(itemOffset, endOffset);
@@ -59,21 +65,24 @@ const Home = () => {
         <p>{"Resultados: " + personajes.length}</p>
       </div>
       <div className="row m-0">
-        {currentItems &&
-          currentItems?.map((p) => <CardPersonaje key={p.id} p={p} />)}
+        {inputBuscar.trim() !== ""
+          ? personajes?.map((p) => <CardPersonaje key={p.id} p={p} />)
+          : currentItems?.map((p) => <CardPersonaje key={p.id} p={p} />)}
       </div>
-      <div className="d-flex justify-content-center">
-        <ReactPaginate
-          className="paginacion"
-          breakLabel="..."
-          nextLabel="Siguiente"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={5}
-          pageCount={pageCount}
-          previousLabel="Anterior"
-          renderOnZeroPageCount={null}
-        />
-      </div>
+      {inputBuscar.trim() === "" && (
+        <div className="d-flex justify-content-center">
+          <ReactPaginate
+            className="paginacion"
+            breakLabel="..."
+            nextLabel="Siguiente"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={5}
+            pageCount={pageCount}
+            previousLabel="Anterior"
+            renderOnZeroPageCount={null}
+          />
+        </div>
+      )}
     </div>
   );
 };
