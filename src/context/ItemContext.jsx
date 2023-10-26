@@ -10,7 +10,7 @@ export function ItemProvider({ children }) {
   const [inputBuscar, setInputBuscar] = useState("");
 
   let index = 1;
-  let cantTotal = 100;
+  let cantTotal = 731;
   let auxData = [];
 
   const getPersonajes = async (url) => {
