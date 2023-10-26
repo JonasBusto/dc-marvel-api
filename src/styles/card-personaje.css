@@ -51,21 +51,11 @@ p {
   line-height: 1.1rem;
 }
 
-.item-color {
-  width: 0.6rem;
-  height: 0.6rem;
-  border-radius: 100%;
-  margin-right: 0.4rem;
-}
-
-.item-color-d {
-  background-color: red;
-}
-.item-color-l {
-  background-color: green;
-}
-.item-color-u {
-  background-color: grey;
+.logo-marca img {
+  object-fit: contain;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
 }
 
 .info-p {

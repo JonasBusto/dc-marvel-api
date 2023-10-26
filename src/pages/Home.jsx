@@ -5,14 +5,8 @@ import ReactPaginate from "react-paginate";
 import "../styles/home.css";
 
 const Home = () => {
-  const {
-    personajesArray,
-    personajes,
-    getPersonajes,
-    buscarPersonaje,
-    filtrarPorEstado,
-    filtrarPorEspecie,
-  } = useContext(ItemsContext);
+  const { personajesArray, personajes, buscarPersonaje } =
+    useContext(ItemsContext);
 
   let auxEspecies = [],
     especies = [],
@@ -59,39 +53,6 @@ const Home = () => {
             onChange={(e) => buscarPersonaje(e.target.value)}
             placeholder="buscar personaje"
           />
-        </div>
-      </div>
-      <div className="row m-0 pt-1 pb-2">
-        <div className="d-flex justify-content-center">
-          <select
-            name="filtro-tipo"
-            id="filtro-tipo"
-            hidden
-            defaultValue={"default"}
-            onChange={(e) => filtrarPorEstado(e.target.value)}
-          >
-            <option value="default">Por defecto</option>
-            {estado.map((e, i) => (
-              <option key={i} value={"" + e + ""}>
-                {e}
-              </option>
-            ))}
-          </select>
-          <select
-            name="filtro-especie"
-            id="filtro-especie"
-            hidden
-            defaultValue={"default"}
-            onChange={(e) => filtrarPorEspecie(e.target.value)}
-          >
-            <option value="default">Por defecto</option>
-
-            {especies.map((e, i) => (
-              <option key={i} value={"" + e + ""}>
-                {e}
-              </option>
-            ))}
-          </select>
         </div>
       </div>
       <div className="row m-0 resultados">

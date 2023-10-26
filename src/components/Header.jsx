@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header>
       <Link to="/" className="titulo-header">
-        Rick and Morty API
+        Marvel - DC API
       </Link>
     </header>
   );

@@ -1,28 +1,44 @@
 .img-personaje img {
   object-fit: cover;
-  height: 270px;
+  height: 360px;
   width: 470px !important;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  border-radius: 5px;
 }
 
-.episodio-container p {
-  color: rgb(158, 158, 158);
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.5rem;
-  line-height: normal;
-  margin-left: 1.5rem !important;
+.logo-marca-personaje > img {
+  width: 7rem;
 }
 
-.episodio-container > div > p {
-  margin: 0 !important;
-  color: white;
-  font-size: 0.7rem;
+.lista-info > div {
+  margin-top: 0.3rem;
+  margin-left: 0.7rem;
 }
 
-.item-list-episodios {
-  background-color: greenyellow;
-  width: 0.6rem;
-  height: 0.6rem;
+.lista-info > div > div:first-child {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: yellowgreen;
   border-radius: 100%;
-  margin-right: 0.4rem;
+  margin-right: 0.5rem;
+}
+
+.lista-item-info > p:first-child {
+  color: rgb(255, 152, 0);
+  /* border-bottom: 1px solid rgb(255, 152, 0); */
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.lista-item-info > p:last-child {
+  color: white;
+  font-weight: 500;
+}
+
+.lista-item-info > p:first-child,
+.lista-item-info > p:last-child {
+  font-size: 0.9rem;
+  line-height: 0.75rem;
+  margin-right: 0.3rem !important;
 }

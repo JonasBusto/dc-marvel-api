@@ -1,0 +1,22 @@
+footer {
+  background-color: rgb(32, 35, 41);
+}
+
+footer > div {
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  color: grey;
+}
+
+footer > div > p {
+  margin: 0 0.4rem !important;
+  font-weight: bold;
+  transition: color 0.2s ease 0s;
+  color: rgb(245, 245, 245);
+  border-bottom: 1px solid rgb(255, 152, 0) !important;
+}
+
+footer > div > p:hover {
+  color: rgb(255, 152, 0);
+  border-bottom: 1px solid transparent !important;
+}
