@@ -18,13 +18,15 @@ ul {
   border-bottom: 2px solid rgb(255, 152, 0);
 }
 
-.paginacion>li {
+.paginacion > li {
   display: flex;
   align-items: center;
   margin: 0 0.4rem;
 }
 
-.btn-custom, .previous, .next {
+.btn-custom,
+.previous,
+.next {
   cursor: pointer;
   margin: 1rem;
   border-radius: 0.5rem;
@@ -37,22 +39,24 @@ ul {
   text-transform: uppercase;
 }
 
-.previous>a , .next>a{
+.previous > a,
+.next > a {
   text-decoration: none;
   color: rgb(51, 51, 51) !important;
 }
 
-.paginacion>.disabled{
+.paginacion > .disabled {
   pointer-events: none;
   background-color: grey;
   border: 1px solid rgb(145, 88, 4);
-} 
-
-.paginacion>.selected {
-  color: rgb(255, 152, 0)
 }
 
-.btn-custom:hover, .previous:hover {
+.paginacion > .selected {
+  color: rgb(255, 152, 0);
+}
+
+.btn-custom:hover,
+.previous:hover {
   background-color: rgb(255, 152, 0);
   color: white;
 }
@@ -61,17 +65,32 @@ ul {
   width: 90%;
   max-width: 900px;
   height: 2.5rem;
-  border-radius: 0.5rem; 
+  border-radius: 0.5rem;
 }
 
-.input-buscar::placeholder, .input-buscar:focus, .input-buscar {
+.input-buscar::placeholder,
+.input-buscar:focus,
+.input-buscar {
   text-transform: uppercase;
   font-weight: 700;
   padding: 0.4rem;
 }
 
-.resultados>p {
+.resultados > p {
   text-align: center;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+@media (max-width: 500px) {
+  .paginacion {
+    padding: 0;
+  }
+  .paginacion,
+  .btn-custom,
+  .previous,
+  .next {
+    font-size: 2.4vw;
+    padding: 2vw;
+  }
 }

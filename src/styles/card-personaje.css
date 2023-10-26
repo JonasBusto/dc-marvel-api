@@ -73,3 +73,13 @@ p {
   font-weight: 700;
   text-transform: uppercase;
 }
+
+@media (max-width: 500px) {
+  .card-p {
+    height: 110vw;
+    margin: 1.2vw;
+    margin-top: 2rem;
+    /* padding: 0; */
+    /* width: 100%; */
+  }
+}

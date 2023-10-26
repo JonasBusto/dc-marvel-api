@@ -3,20 +3,31 @@ footer {
 }
 
 footer > div {
-  padding-top: 1rem;
   padding-bottom: 0.5rem;
   color: grey;
 }
 
-footer > div > p {
+footer > div > p,
+.api-footer-url > a {
   margin: 0 0.4rem !important;
   font-weight: bold;
   transition: color 0.2s ease 0s;
   color: rgb(245, 245, 245);
   border-bottom: 1px solid rgb(255, 152, 0) !important;
+  text-decoration: none;
 }
 
-footer > div > p:hover {
+footer > div > p:hover,
+.api-footer-url > a:hover {
   color: rgb(255, 152, 0);
   border-bottom: 1px solid transparent !important;
+}
+.api-footer-url {
+  padding-top: 1rem;
+}
+
+.api-footer-url > h5 {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 1rem;
 }

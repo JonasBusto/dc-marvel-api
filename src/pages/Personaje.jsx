@@ -18,7 +18,7 @@ const Personaje = () => {
 
   return (
     <div
-      className="home-container mx-auto pt-5 w-100"
+      className="home-container mx-auto py-5 w-100"
       style={{ maxWidth: "1000px" }}
     >
       <div className="row m-0">
