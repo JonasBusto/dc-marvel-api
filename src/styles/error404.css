@@ -1,0 +1,35 @@
+.error404-contain {
+    background-image: url("https://st2.depositphotos.com/5568072/8919/v/450/depositphotos_89191820-stock-illustration-superhero-icon-vector-black-superhero.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 20rem;
+    background-position: 0 -6rem;
+}
+
+.error404-contain>p {
+    font-size: 3rem;
+    color: rgb(255, 152, 0);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 2.7rem;
+}
+
+.error404-contain>div>p {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.error404-contain>a {
+    margin: 1rem 0.4rem !important;
+    font-weight: bold;
+    transition: color 0.2s ease 0s;
+    color: rgb(245, 245, 245);
+    border-bottom: 1px solid rgb(255, 152, 0) !important;
+    text-decoration: none;
+}
+
+.error404-contain>a:hover {
+    color: rgb(255, 152, 0);
+    border-bottom: 1px solid transparent !important;
+  }
