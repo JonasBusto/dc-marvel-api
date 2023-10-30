@@ -6,8 +6,15 @@ import "../styles/home.css";
 import { useEffect } from "react";
 
 const Home = () => {
-  const { personajes, buscarPersonaje, inputBuscar, cargando } =
-    useContext(ItemsContext);
+  const {
+    personajes,
+    buscarPersonaje,
+    inputBuscar,
+    cargando,
+    filtrarOrdenAZ,
+    filtrarPorNivelPoder,
+    filtrarPorEditorial,
+  } = useContext(ItemsContext);
 
   const [itemOffset, setItemOffset] = useState(0);
 
@@ -61,7 +68,41 @@ const Home = () => {
           />
         </div>
       </div>
-      <div className="row m-0 resultados">
+      <div className="row m-0 filtros d-flex justify-content-center">
+        <div>
+          <select
+            name="filtro-a-z"
+            id="filtro-a-z"
+            onChange={(e) => filtrarOrdenAZ(e.target.value)}
+          >
+            <option value="a-z">A-Z</option>
+            <option value="z-a">Z-A</option>
+          </select>
+        </div>
+        <div hidden>
+          <select
+            name="filtro-por-editorial"
+            id="filtro-por-editorial"
+            onChange={(e) => filtrarPorNivelPoder(e.target.value)}
+          >
+            <option value="todos">Todos</option>
+            <option value="mayor-poder">Mayor poder</option>
+            <option value="menor-poder">Menor Poder</option>
+          </select>
+        </div>
+        <div>
+          <select
+            name="filtro-por-editorial"
+            id="filtro-por-editorial"
+            onChange={(e) => filtrarPorEditorial(e.target.value)}
+          >
+            <option value="todos">Todos</option>
+            <option value="DC Comics">DC Comics</option>
+            <option value="Marvel Comics">Marvel Comics</option>
+          </select>
+        </div>
+      </div>
+      <div className="row mt-2 resultados">
         <p>{"Resultados: " + personajes.length}</p>
       </div>
       <div className="row m-0">

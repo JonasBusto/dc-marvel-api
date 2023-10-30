@@ -8,6 +8,9 @@ export function ItemProvider({ children }) {
   const [personaje, setPersonaje] = useState(null);
   const [cargando, setCargando] = useState(0);
   const [inputBuscar, setInputBuscar] = useState("");
+  const [selectOrden, setSelectOrden] = useState("");
+  const [selectPoder, setSelectPoder] = useState("");
+  const [selectEditorial, setSelectEditorial] = useState("");
 
   let index = 1;
   let cantTotal = 100;
@@ -61,6 +64,18 @@ export function ItemProvider({ children }) {
     setInputBuscar(value);
   };
 
+  const filtrarOrdenAZ = (value) => {
+    setSelectOrden(value);
+  };
+
+  const filtrarPorNivelPoder = (value) => {
+    setSelectPoder(value);
+  };
+
+  const filtrarPorEditorial = (value) => {
+    setSelectEditorial(value);
+  };
+
   useEffect(() => {
     getPersonajes("https://www.superheroapi.com/api.php/3219074728386143/1");
   }, []);
@@ -69,7 +84,45 @@ export function ItemProvider({ children }) {
 
   useEffect(() => {
     let arrayAux = [];
-    personajesArray.map(
+    let arrayAuxPersonajes = [...personajesArray];
+
+    if (selectEditorial === "todos") {
+      arrayAuxPersonajes = [...personajesArray];
+    } else if (selectEditorial === "DC Comics") {
+      arrayAuxPersonajes = personajesArray.filter(
+        (e) => e?.biography.publisher === "DC Comics"
+      );
+    } else if (selectEditorial === "Marvel Comics") {
+      arrayAuxPersonajes = personajesArray.filter(
+        (e) => e?.biography.publisher === "Marvel Comics"
+      );
+    }
+
+    if (selectOrden === "a-z") {
+      function compare(obj1, obj2) {
+        if (obj1.name > obj2.name) {
+          return 1;
+        } else if (obj1.name < obj2.name) {
+          return -1;
+        } else {
+          return 0;
+        }
+      }
+      arrayAuxPersonajes.sort(compare);
+    } else if (selectOrden === "z-a") {
+      function compare(obj1, obj2) {
+        if (obj1.name > obj2.name) {
+          return -1;
+        } else if (obj1.name < obj2.name) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
+      arrayAuxPersonajes.sort(compare);
+    }
+
+    arrayAuxPersonajes.map(
       (p, i) =>
         (p.name.toLowerCase().includes(inputBuscar.toLowerCase().trim()) ||
           p.biography.publisher
@@ -78,7 +131,7 @@ export function ItemProvider({ children }) {
         arrayAux.push(p)
     );
     setPersonajes(arrayAux);
-  }, [inputBuscar]);
+  }, [inputBuscar, selectOrden, selectPoder, selectEditorial]);
 
   return (
     <ItemsContext.Provider
@@ -90,6 +143,9 @@ export function ItemProvider({ children }) {
         buscarPersonaje,
         inputBuscar,
         cargando,
+        filtrarOrdenAZ,
+        filtrarPorNivelPoder,
+        filtrarPorEditorial,
       }}
     >
       {children}

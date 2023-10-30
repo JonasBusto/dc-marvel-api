@@ -1,9 +1,10 @@
 .error404-contain {
-    background-image: url("https://st2.depositphotos.com/5568072/8919/v/450/depositphotos_89191820-stock-illustration-superhero-icon-vector-black-superhero.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
-    height: 20rem;
-    background-position: 0 -6rem;
+    background-size: contain;
+    
+    /*
+    background-image: url("https://st2.depositphotos.com/5568072/8919/v/450/depositphotos_89191820-stock-illustration-superhero-icon-vector-black-superhero.jpg");
+    background-position: 0 -6rem;*/
 }
 
 .error404-contain>p {

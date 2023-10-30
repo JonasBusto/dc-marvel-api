@@ -9,10 +9,9 @@ const Personaje = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    buscarPersonaje("");
     getPersonaje(id);
   }, []);
-
-  buscarPersonaje("");
 
   if (!personaje) {
     return <h2>Cargando...</h2>;
